@@ -1,0 +1,34 @@
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+.screenTitle {
+  font-size: 1.25rem;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.addButton {
+  border-radius: 50%;
+}
+
+/* ================= Product.js ================= */
+.currency {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+/* ================= Customer.js ================= */
+.customerImg {}
+
+.customerAddress {
+  font-size: 0.8rem;
+}

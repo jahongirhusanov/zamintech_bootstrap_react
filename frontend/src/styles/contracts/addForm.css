@@ -1,0 +1,11 @@
+.contractContainer {
+    margin: 3rem 2rem;
+}
+
+.contractInput {
+    border: none;
+}
+
+.contractInput:hover {
+    background-color: #FDF4DB;
+}
