@@ -29,6 +29,7 @@ function InputDateMaxToday(props) {
         onChange={props.onChange}
         max={today}
         style={{ marginBottom: '1rem' }}
+        disabled={props.disabled}
       />
     </>
   )

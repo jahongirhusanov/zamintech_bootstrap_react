@@ -18,6 +18,7 @@ function InputDropdown(props) {
         onChange={props.onChange}
         autoComplete='off'
         style={{ marginBottom: '1rem' }}
+        disabled={props.disabled}
       />
       <datalist id='lists'>
         {props.items.map((item, index) => (

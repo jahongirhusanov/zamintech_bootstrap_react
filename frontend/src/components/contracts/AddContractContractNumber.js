@@ -18,7 +18,7 @@ function AddContractContractNumber() {
       <Col xs={12} md={6}>
         <div className='form-group row'>
           <label
-            for='inputPassword'
+            htmlFor='inputPassword'
             className='col-sm-4 col-form-label'
             style={{ textAlign: 'right', paddingRight: 0 }}
           >
