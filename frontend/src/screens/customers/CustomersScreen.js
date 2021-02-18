@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
 import Customer from '../../components/customers/Customer'
 import { Link } from 'react-router-dom'
+import './customersscreen.scss'
 
 function CustomersScreen() {
   const [state, setState] = useState({

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 // import defaultProfPic from '../../images/customers/profile1.jpg'
+import './customer.scss'
 
 function Customer({ customer }) {
   // const isImageEmpty = false
@@ -19,11 +20,18 @@ function Customer({ customer }) {
     <Card className='my-3 p-3 rounded'>
       <Link to={`/customer/${customer.id}`}>
         {/* <Card.Img src={customer.image} variant='top' className='customerImg' /> */}
-        <Card.Img
-          src={chooseProfilePic(customer.image)}
-          variant='top'
-          className='customerImg'
-        />
+        <div className='icon-image'>
+          <Card.Img
+            src={chooseProfilePic(customer.image)}
+            variant='top'
+            className='customerImg'
+          />
+          {customer.inBlackList ? (
+            <div className='top-left'>
+              <i className='fas fa-user-secret black-list' />
+            </div>
+          ) : null}
+        </div>
       </Link>
       <Card.Body>
         <Link to={`/customer/${customer.id}`}>
