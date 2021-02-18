@@ -8,6 +8,7 @@ import InputDropdown from '../general/form/InputDropdown'
 import InputDateAge from '../general/form/InputDateAge'
 import InputDateMinToday from '../general/form/InputDateMinToday'
 import InputDateMaxToday from '../general/form/InputDateMaxToday'
+import './addcustomerform.scss'
 
 function AddCustomerForm() {
   const url = 'http://localhost:3001/customers/'
@@ -41,10 +42,15 @@ function AddCustomerForm() {
     description: '',
   })
 
+  const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false)
+
   function submitHandler(e) {
     e.preventDefault()
     Axios.post(url, data).then((res) => {
-      console.log(res.data)
+      console.log(res.status)
+      if (res.status === 201) {
+        setIsSuccessfullySubmitted(true)
+      }
     })
   }
   function inputHandler(e) {
@@ -68,6 +74,7 @@ function AddCustomerForm() {
               id='fName'
               value={data.fName}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
           <Col md={6}>
@@ -81,6 +88,7 @@ function AddCustomerForm() {
               id='lName'
               value={data.lName}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
           <Col md={6}>
@@ -93,6 +101,7 @@ function AddCustomerForm() {
               id='mName'
               value={data.mName}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
           <Col md={6}>
@@ -104,6 +113,7 @@ function AddCustomerForm() {
               id='dob'
               value={data.dob}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -118,6 +128,7 @@ function AddCustomerForm() {
               value={data.cityBorn}
               onChange={(e) => inputHandler(e)}
               items={citiesList}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -131,6 +142,7 @@ function AddCustomerForm() {
               id='pasportNum'
               value={data.pasportNum}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -145,6 +157,7 @@ function AddCustomerForm() {
               value={data.pasportIssuedBy}
               onChange={(e) => inputHandler(e)}
               items={passportIssuers}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -157,6 +170,7 @@ function AddCustomerForm() {
               id='pasportIssuedAt'
               value={data.pasportIssuedAt}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -170,6 +184,7 @@ function AddCustomerForm() {
               id='pasportExpAt'
               value={data.pasportExpAt}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -189,6 +204,7 @@ function AddCustomerForm() {
               onChange={(e) => inputHandler(e)}
               style={{ marginBottom: '1rem' }}
               autoComplete='off'
+              disabled={isSuccessfullySubmitted ? true : false}
             />
             <datalist id='languages'>
               {provinceNames.map((province, index) => (
@@ -208,6 +224,7 @@ function AddCustomerForm() {
               value={data.addressCity}
               onChange={(e) => inputHandler(e)}
               items={citiesList}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -222,6 +239,7 @@ function AddCustomerForm() {
               id='addressStreet'
               value={data.addressStreet}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -237,6 +255,7 @@ function AddCustomerForm() {
               max='999999'
               value={data.addressZIP}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -250,6 +269,7 @@ function AddCustomerForm() {
               id='email'
               value={data.email}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -265,6 +285,7 @@ function AddCustomerForm() {
               pattern='[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}'
               value={data.phoneNum}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -279,6 +300,7 @@ function AddCustomerForm() {
               pattern='[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}'
               value={data.phoneNum2}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -293,6 +315,7 @@ function AddCustomerForm() {
               id='position'
               value={data.position}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -307,6 +330,7 @@ function AddCustomerForm() {
               id='workAt'
               value={data.workAt}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -322,6 +346,7 @@ function AddCustomerForm() {
               min='100000'
               value={data.salary}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
@@ -336,12 +361,12 @@ function AddCustomerForm() {
               id='image'
               value={data.image}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
           <Col md={12}>
             <InputWithLabel
-              required
               htmlFor='description'
               label='Изоҳ'
               placeholder='Изоҳ'
@@ -350,14 +375,23 @@ function AddCustomerForm() {
               id='description'
               value={data.description}
               onChange={(e) => inputHandler(e)}
+              disabled={isSuccessfullySubmitted ? true : false}
             />
           </Col>
 
-          <Col md={12} className='text-center'>
-            <button type='submit' className='btn btn-primary'>
-              ҚЎШИШ
-            </button>
-          </Col>
+          {!isSuccessfullySubmitted && (
+            <Col md={12} className='text-center'>
+              <button type='submit' className='btn btn-primary'>
+                ҚЎШИШ
+              </button>
+            </Col>
+          )}
+
+          {isSuccessfullySubmitted && (
+            <Col md={12} className='success'>
+              муваффақиятли қўшилди
+            </Col>
+          )}
         </Row>
       </Col>
     </form>

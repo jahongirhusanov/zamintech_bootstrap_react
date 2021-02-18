@@ -35,7 +35,7 @@ function InputDateToday(props) {
 
       <div className='form-group row'>
         <label
-          for='inputPassword'
+          htmlFor='inputPassword'
           className='col-sm-4 col-form-label'
           style={{ textAlign: 'right', paddingRight: 0 }}
         >
@@ -49,6 +49,7 @@ function InputDateToday(props) {
             placeholder={props.placeholder}
             min={today}
             max={today}
+            disabled={props.disabled}
           />
         </div>
       </div>

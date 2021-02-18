@@ -29,6 +29,7 @@ function InputDateAge(props) {
         onChange={props.onChange}
         max={age}
         style={{ marginBottom: '1rem' }}
+        disabled={props.disabled}
       />
     </>
   )

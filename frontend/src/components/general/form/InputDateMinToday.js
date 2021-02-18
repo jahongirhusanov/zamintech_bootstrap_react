@@ -29,6 +29,7 @@ function InputDateToday(props) {
         onChange={props.onChange}
         min={today}
         style={{ marginBottom: '1rem' }}
+        disabled={props.disabled}
       />
     </>
   )

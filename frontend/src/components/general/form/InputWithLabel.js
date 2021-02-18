@@ -19,6 +19,7 @@ function InputWithLabel(props) {
         max={props.max}
         pattern={props.pattern}
         style={{ marginBottom: '1rem' }}
+        disabled={props.disabled}
       />
     </>
   )
