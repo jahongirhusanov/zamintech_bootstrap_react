@@ -1,54 +1,87 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Button } from 'react-bootstrap'
-import Contract from '../../components/contracts/Contract'
-import { Link } from 'react-router-dom'
+import BootstrapTable from 'react-bootstrap-table-next'
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function ContractsScreen() {
-  const [state, setState] = useState({
-    loading: true,
-    contractList: null,
-  })
+  //   const [contracts, setContracts] = useState([])
 
-  useEffect(() => {
-    async function fetchMyApi() {
-      const url = 'http://localhost:3001/contracts'
-      const res = await fetch(url)
-      const data = await res.json()
-      setState({
-        contractList: data,
-        loading: false,
-      })
-    }
-    fetchMyApi()
-  }, [])
+  var products = [
+    {
+      id: 1,
+      contractNum: 'ZT-000001',
+      contractDate: '08/10/2020',
+    },
+    {
+      id: 2,
+      contractNum: 'ZT-000002',
+      contractDate: '09/11/2019',
+    },
+    {
+      id: 2,
+      contractNum: 'ZT-000002',
+      contractDate: '09/11/2019',
+    },
+    {
+      id: 2,
+      contractNum: 'ZT-000002',
+      contractDate: '09/11/2019',
+    },
+    {
+      id: 2,
+      contractNum: 'ZT-000002',
+      contractDate: '09/11/2019',
+    },
+    {
+      id: 2,
+      contractNum: 'ZT-000002',
+      contractDate: '09/11/2019',
+    },
+  ]
+
+  const columns = [
+    {
+      dataField: 'id',
+      text: 'Product ID',
+    },
+    {
+      dataField: 'contractNum',
+      text: 'Contract Number',
+      filter: textFilter(),
+    },
+    {
+      dataField: 'contractDate',
+      text: 'Date',
+      filter: textFilter({
+        onFilter: (filterVal) => console.log(`Filter Value: ${filterVal}`),
+      }),
+    },
+  ]
+
+  function afterFilter(newResult, newFilters) {
+    console.log(newResult)
+    console.log(newFilters)
+  }
+
+  const rowEvents = {
+    onClick: (e, row, rowIndex) => {
+      // need to impliment click for full details
+      console.log(`clicked on row with index: ${rowIndex}`)
+    },
+    onMouseEnter: (e, row, rowIndex) => {
+      // need to impliment backgroud color change
+      console.log(`enter on row with index: ${rowIndex}`)
+    },
+  }
 
   return (
-    <>
-      <Row sm={0} md={4}>
-        <Col md={3}>
-          <h1 className='screenTitle'>Шартномалар</h1>
-          <Link to='/contract-add'>
-            <Button size='sm' className='btn btn-primary addButton'>
-              <i className='fas fa-plus-circle'></i>
-            </Button>{' '}
-          </Link>
-        </Col>
-      </Row>
-
-      {state.loading ? (
-        <div>loading...</div>
-      ) : (
-        <div>
-          <Row>
-            {state.contractList.map((contract) => (
-              <Col key={contract.id} sm={12} md={6} lg={4} xl={3}>
-                <Contract contract={contract} />
-              </Col>
-            ))}
-          </Row>
-        </div>
-      )}
-    </>
+    <BootstrapTable
+      keyField='id'
+      data={products}
+      columns={columns}
+      filter={filterFactory({ afterFilter })}
+      rowEvents={rowEvents}
+    />
   )
 }
 
