@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 import Rating from '../../components/products/Rating'
+import { CartContext } from '../CartPage/cart'
+import { useHistory } from 'react-router-dom'
+import products from '../../api/products'
 
 function ProductScreen({ match }) {
+  const history = useHistory()
   const [loading, setLoading] = useState(true)
   const [product, setProduct] = useState({})
+  const { addToCart } = React.useContext(CartContext)
 
   // useEffect(async () => {
   //   const url = 'http://localhost:3001/products'
@@ -104,6 +109,10 @@ function ProductScreen({ match }) {
                       type='button'
                       // it will check if out of stock, add button will be disabled
                       disabled={product.countInStock === 0}
+                      onClick={() => {
+                        history.push('/cart')
+                        addToCart(product)
+                      }}
                     >
                       Саватчага Қўшиш
                     </Button>
