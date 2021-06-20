@@ -4,10 +4,14 @@ import './bootstrap.min.css'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { CartProvider } from './screens/CartPage/cart'
 
 ReactDOM.render(
   // <React.StrictMode>
-  <App />,
+  <CartProvider>
+    <App />
+  </CartProvider>,
+
   // </React.StrictMode>,
   document.getElementById('root')
 )
