@@ -34,10 +34,9 @@ function App() {
 
           <Route path='/contracts' component={ContractsScreen} exact />
           <Route path='/contracts/:id' component={ContractScreen} exact />
-          <Route path='/contract-add' component={AddContractScreen} exact />
 
           <Route
-            path='/contract-customer-form-add'
+            path='/contract-add'
             component={AddContractCustomerForm}
             exact
           />
