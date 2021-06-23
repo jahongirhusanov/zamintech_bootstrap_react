@@ -2,11 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Card } from 'react-bootstrap'
 import AddContractForm from '../../components/contracts/AddContractForm'
+import AddContractCustomerForm from '../../components/contracts/AddContractCustomerForm'
 
 function AddContractScreen() {
   return (
     <>
-      <Link className='btn btn-light' to='/customers'>
+      <Link className='btn btn-light' to='/contracts'>
         <i className='fas fa-long-arrow-alt-left' size='5x'></i>
       </Link>
       <Row className='my-2'>

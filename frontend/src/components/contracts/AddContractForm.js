@@ -6,6 +6,7 @@ import Axios from 'axios'
 import AddContractFormHeader from './AddContractFormHeader'
 import AddContractCustomer from './AddContractCustomer'
 import AddContractContractNumber from './AddContractContractNumber'
+import AddContractCustomerForm from './AddContractCustomerForm'
 
 function AddCustomerForm() {
   const [loading, setLoading] = useState(true)
@@ -148,11 +149,14 @@ function AddCustomerForm() {
 
           <AddContractContractNumber />
 
-          <Col md={12} className='text-center'>
+          {/* <Col xs={12} md={6}>
+            <AddContractCustomerForm />
+          </Col> */}
+          {/* <Col md={12} className='text-center'>
             <button type='submit' className='btn btn-primary'>
               ҚЎШИШ
             </button>
-          </Col>
+          </Col> */}
         </Row>
       </Col>
     </form>

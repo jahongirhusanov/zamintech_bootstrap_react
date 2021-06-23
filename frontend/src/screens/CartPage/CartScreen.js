@@ -18,8 +18,8 @@ export default function CartScreen() {
       })}
       <h2>total : $ {subTotal}</h2>
       {user ? (
-        <Link to='/checkout' className='btn btn-outline-primary btn-block'>
-          TEKSHIRISH
+        <Link to='/contract-add' className='btn btn-outline-primary btn-block'>
+          Шартнома Тузиш - <i className='fas fa-file-signature'></i>
         </Link>
       ) : (
         <Link to='/login' className='btn btn-outline-primary btn-block'>
