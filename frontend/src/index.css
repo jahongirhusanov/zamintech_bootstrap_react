@@ -97,6 +97,7 @@ h3 {
   background: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
 }
 .remove-btn {
   color: red;
@@ -106,12 +107,14 @@ h3 {
 }
 .item-amount {
   text-align: center;
+  margin-left: 14px;
   margin-bottom: 0;
 }
 .item-amount2 {
   margin-bottom: 0;
   margin-top: 0;
   text-align: center;
+  margin-left: 14px;
 }
 .amount-btn {
   font-size: 1.1rem;

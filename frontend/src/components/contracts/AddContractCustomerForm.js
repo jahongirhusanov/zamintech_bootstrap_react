@@ -43,7 +43,7 @@ function AddContractCustomerForm({ match }) {
   }
 
   return (
-    <div className="customer-form">
+    <div className="customer-form mt-5">
       <Form>
         <Form.Label>
           <h2>Xarid Qilingan Mahsulotlar</h2>
@@ -61,7 +61,7 @@ function AddContractCustomerForm({ match }) {
                   </Form.Label>{" "}
                   <br />
                 </Col>
-                <Col style={{ textAlign: "center" }}>
+                <Col>
                   <Form.Label>
                     <b>MIQDORI</b>
                   </Form.Label>{" "}
@@ -88,7 +88,7 @@ function AddContractCustomerForm({ match }) {
                 </Col>
               </Form.Row>
               <Form.Row>
-                <Col xs={6}>
+                <Col xs={3}>
                   <Link to="/products">
                     <button type="button" className="btn btn-primary">
                       Mahsulot Qo'shish

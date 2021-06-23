@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col } from "react-bootstrap";
-import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { CartContext } from "../../screens/CartPage/cart";
 import InputWithLabel from "../general/form/InputWithLabel";
 
@@ -29,7 +30,7 @@ export default function CartItem({ id, price, name, amount }) {
           disabled
         />
       </Col>
-      <Col style={{ textAlign: "center" }}>
+      <Col>
         <div className="ml-2">
           <button
             type="button"
@@ -37,7 +38,7 @@ export default function CartItem({ id, price, name, amount }) {
             onClick={() => increaseAmount(id)}
             style={{ outline: "none" }}
           >
-            <FaAngleUp />
+            <KeyboardArrowUpIcon />
           </button>
           <p className="item-amount2">{amount}</p>
           <button
@@ -46,7 +47,7 @@ export default function CartItem({ id, price, name, amount }) {
             onClick={() => decreaseAmount(id, amount)}
             style={{ outline: "none" }}
           >
-            <FaAngleDown />
+            <KeyboardArrowDownIcon />
           </button>
         </div>
       </Col>

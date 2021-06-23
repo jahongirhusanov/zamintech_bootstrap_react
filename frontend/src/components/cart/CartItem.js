@@ -1,17 +1,24 @@
 import React from "react";
-import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { CartContext } from "../../screens/CartPage/cart";
 
 export default function CartItem({ id, image, name, price, amount }) {
-  const { removeItem, increaseAmount, decreaseAmount } = React.useContext(
-    CartContext
-  );
+  const { removeItem, increaseAmount, decreaseAmount } =
+    React.useContext(CartContext);
+  var currencyFormatter = require("currency-formatter");
+
+  function formatNumber(number) {
+    number = Math.round(number);
+    return currencyFormatter.format(number, { code: "" });
+  }
+
   return (
     <article className="cart-item">
       <img src={image} alt={name} />
       <div>
         <h4>{name}</h4>
-        <h5>${price}</h5>
+        <h5>{`${formatNumber(price)} сўм`}</h5>
         <button
           type="button"
           className="cart-btn remove-btn"
@@ -27,7 +34,7 @@ export default function CartItem({ id, image, name, price, amount }) {
           //   style={{ outline: "none" }}
           onClick={() => increaseAmount(id)}
         >
-          <FaAngleUp />
+          <KeyboardArrowUpIcon />
         </button>
         <p className="item-amount">{amount}</p>
         <button
@@ -36,7 +43,7 @@ export default function CartItem({ id, image, name, price, amount }) {
           //   style={{ outline: "none" }}
           onClick={() => decreaseAmount(id, amount)}
         >
-          <FaAngleDown />
+          <KeyboardArrowDownIcon />
         </button>
       </div>
     </article>

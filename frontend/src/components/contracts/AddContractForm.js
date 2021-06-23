@@ -3,6 +3,8 @@ import { Col, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import '../../styles/contracts/addForm.css'
 import "./addcontractform.scss";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import Axios from "axios";
 import AddContractFormHeader from "./AddContractFormHeader";
 import AddContractCustomerForm from "./AddContractCustomerForm";
@@ -50,40 +52,59 @@ function AddCustomerForm() {
     const newData = { ...data };
     setData(newData);
   }
-
+  const top100Films = [
+    { title: "The Shawshank Redemption", year: 1994 },
+    { title: "The Godfather", year: 1972 },
+    { title: "The Godfather: Part II", year: 1974 },
+    { title: "The Dark Knight", year: 2008 },
+    { title: "12 Angry Men", year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+  ];
   return (
     <form>
       <Col>
         <Row className="contractContainer">
           <AddContractFormHeader />
           {/* <AddContractCustomer /> */}
-
           {/* ======================== AddContractCustomer ======================== */}
           <Col xs={12} md={6}>
             <Col xs={12} md={6}>
               <div
                 className="col-auto"
-                style={{ width: "70%", position: "relative", padding: 0 }}
+                style={{ position: "relative", padding: 0 }}
               >
                 <div className="input-group mb-2">
-                  <input
+                  <Autocomplete
+                    id="combo-box-demo"
+                    options={searchResults}
+                    getOptionLabel={(option) => option.pasportNum}
+                    style={{ width: 300 }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Passport рақам..."
+                        variant="outlined"
+                      />
+                    )}
+                  />
+                  {/* <input
                     type="text"
                     className="form-control form-control-sm"
                     id="searchText"
                     placeholder="Passport рақам киритинг ..."
                     value={searchText}
                     onChange={handleSearchInput}
-                  />
-                  <div className="input-group-prepend">
+                  /> */}
+                  {/* <div className="input-group-prepend">
                     <div
                       className="input-group-text"
                       style={{ cursor: "pointer" }}
                     >
                       <i className="fas fa-search"></i>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
-                {searchResults
+                {/* {searchResults
                   .filter((val) => {
                     if (searchText === "") {
                       return val;
@@ -105,12 +126,9 @@ function AddCustomerForm() {
                         >
                           {state.pasportNum}
                         </Alert.Link>
-                        {/* <a href="#" className='passportSearchResult'>
-                          {state.pasportNum}
-                        </a> */}
                       </div>
                     );
-                  })}
+                  })} */}
               </div>{" "}
               <br />
               <div
@@ -157,12 +175,12 @@ function AddCustomerForm() {
               </div>
             </Col>
           </Col>
-
           {/* ================================= */}
-
           <AddContractContractNumber />
-
-          <Col md={12} className="text-center">
+          <Col md={12}>
+            <AddContractCustomerForm />
+          </Col>
+          <Col className="text-center">
             <Link to="/contract-customer-form-add">
               <button type="submit" className="btn btn-primary">
                 ҚЎШИШ
