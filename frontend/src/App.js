@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ProductsScreen from './screens/products/ProductsScreen'
 import ProductScreen from './screens/products/ProductScreen'
+import AddProductScreen from './screens/products/AddProductScreen'
 import HomeScreen from './screens/home/HomeScreen'
 import CustomersScreen from './screens/customers/CustomersScreen'
 import CustomerScreen from './screens/customers/CustomerScreen'
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' component={HomeScreen} exact />
           <Route path='/products' component={ProductsScreen} exact />
           <Route path='/products/:id' component={ProductScreen} exact />
+          <Route path='/product-add' component={AddProductScreen} exact />
 
           <Route path='/customers' component={CustomersScreen} exact />
           <Route path='/customer/:id' component={CustomerScreen} exact />
