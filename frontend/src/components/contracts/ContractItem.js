@@ -5,7 +5,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { CartContext } from "../../screens/CartPage/cart";
 import InputWithLabel from "../general/form/InputWithLabel";
 
-export default function CartItem({ id, price, name, amount }) {
+export default function CartItem({ id, installmentPrice, name, amount }) {
   const { increaseAmount, decreaseAmount } = React.useContext(CartContext);
   var currencyFormatter = require("currency-formatter");
   function formatNumber(number) {
@@ -16,7 +16,7 @@ export default function CartItem({ id, price, name, amount }) {
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    setTotal(price * amount);
+    setTotal(installmentPrice * amount);
   });
 
   return (
@@ -56,7 +56,7 @@ export default function CartItem({ id, price, name, amount }) {
           required
           placeholder="Price"
           type="text"
-          value={`${formatNumber(price)} сўм`}
+          value={`${formatNumber(installmentPrice)} сўм`}
           disabled
         />
       </Col>
