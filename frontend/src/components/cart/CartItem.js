@@ -3,7 +3,13 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { CartContext } from "../../screens/CartPage/cart";
 
-export default function CartItem({ id, image, name, price, amount }) {
+export default function CartItem({
+  id,
+  image,
+  name,
+  installmentPrice,
+  amount,
+}) {
   const { removeItem, increaseAmount, decreaseAmount } =
     React.useContext(CartContext);
   var currencyFormatter = require("currency-formatter");
@@ -18,7 +24,7 @@ export default function CartItem({ id, image, name, price, amount }) {
       <img src={image} alt={name} />
       <div>
         <h4>{name}</h4>
-        <h5>{`${formatNumber(price)} сўм`}</h5>
+        <h5>{`${formatNumber(installmentPrice)} сўм`}</h5>
         <button
           type="button"
           className="cart-btn remove-btn"

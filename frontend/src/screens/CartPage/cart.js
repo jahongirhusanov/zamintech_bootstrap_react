@@ -30,7 +30,7 @@ function CartProvider({ children, match }) {
 
     // subTotal
     let newTotal = cart.reduce((subTotal, cartItem) => {
-      return (subTotal += cartItem.amount * cartItem.price);
+      return (subTotal += cartItem.amount * cartItem.installmentPrice);
     }, 0);
     newTotal = parseFloat(newTotal.toFixed(2));
     setSubTotal(newTotal);
@@ -80,13 +80,13 @@ function CartProvider({ children, match }) {
 
   //  add to cart
   const addToCart = (product) => {
-    const { id, image, name, price } = product;
+    const { id, image, name, installmentPrice } = product;
     const item = [...cart].find((item) => item.id === id);
     if (item) {
       increaseAmount(id);
       return;
     } else {
-      const newItem = { id, image, name, price, amount: 1 };
+      const newItem = { id, image, name, installmentPrice, amount: 1 };
       const newCart = [...cart, newItem];
       setCart(newCart);
     }
@@ -94,7 +94,7 @@ function CartProvider({ children, match }) {
 
   // add item
   const addItem = (product) => {
-    const { id, name, price } = product;
+    const { id, name, installmentPrice } = product;
     const item = [...cart];
   };
   // clear cart

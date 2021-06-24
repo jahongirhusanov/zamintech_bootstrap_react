@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
-import Customer from '../../components/customers/Customer'
+import Contract from '../../components/contracts/Contract'
 import { Link } from 'react-router-dom'
-import './customersscreen.scss'
 
-function CustomersScreen() {
+function ContractsScreen() {
   const [state, setState] = useState({
     loading: true,
-    customerList: null,
+    contractList: null,
   })
 
   useEffect(() => {
     async function fetchMyApi() {
-      const url = 'http://localhost:3001/customers'
+      const url = 'http://localhost:3001/contracts'
       const res = await fetch(url)
       const data = await res.json()
       setState({
-        customerList: data,
+        contractList: data,
         loading: false,
       })
     }
@@ -27,8 +26,8 @@ function CustomersScreen() {
     <>
       <Row sm={0} md={4}>
         <Col md={3}>
-          <h1 className='screenTitle'>Мижозлар</h1>
-          <Link to='/customer-add'>
+          <h1 className='screenTitle'>Шартномалар</h1>
+          <Link to='/contract-add'>
             <Button size='sm' className='btn btn-primary addButton'>
               <i className='fas fa-plus-circle'></i>
             </Button>{' '}
@@ -41,9 +40,9 @@ function CustomersScreen() {
       ) : (
         <div>
           <Row>
-            {state.customerList.map((customer) => (
-              <Col key={customer.id} sm={12} md={6} lg={4} xl={3}>
-                <Customer customer={customer} />
+            {state.contractList.map((contract) => (
+              <Col key={contract.id} sm={12} md={6} lg={4} xl={3}>
+                <Contract contract={contract} />
               </Col>
             ))}
           </Row>
@@ -53,4 +52,4 @@ function CustomersScreen() {
   )
 }
 
-export default CustomersScreen
+export default ContractsScreen

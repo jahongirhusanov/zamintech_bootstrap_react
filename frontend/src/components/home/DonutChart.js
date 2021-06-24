@@ -1,5 +1,17 @@
 import React from 'react'
+import Chart from 'react-google-charts'
 import './donutchart.scss'
+
+const data = [
+  ['Task', 'contracts per Institutions'],
+  ['Bank', 110],
+  ['Naqd', 25],
+  ['Zamin', 62],
+]
+const options = {
+  pieHole: 1.2,
+  is3D: true,
+}
 
 function DonutChart(props) {
   return (
@@ -13,7 +25,16 @@ function DonutChart(props) {
             <hr />
           </div>
         </div>
-        <div></div>
+        <div>
+          <Chart
+            chartType='PieChart'
+            width='100%'
+            height='300px'
+            data={data}
+            options={options}
+            loader={<div>Юкланмоқда ...</div>}
+          />
+        </div>
       </div>
     </div>
   )
