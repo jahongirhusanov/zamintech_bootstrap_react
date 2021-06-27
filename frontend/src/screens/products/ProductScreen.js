@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
-import Rating from '../../components/products/Rating'
-import { CartContext } from '../CartPage/cart'
-import { useHistory } from 'react-router-dom'
-import products from '../../api/products'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
+import Rating from "../../components/products/Rating";
+import { CartContext } from "../CartPage/cart";
+import { useHistory } from "react-router-dom";
+import products from "../../api/products";
 
 function ProductScreen({ match }) {
-  const history = useHistory()
-  const [loading, setLoading] = useState(true)
-  const [product, setProduct] = useState({})
-  const { addToCart } = React.useContext(CartContext)
-
+  const history = useHistory();
+  const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState({});
+  const { addToCart } = React.useContext(CartContext);
   // useEffect(async () => {
   //   const url = 'http://localhost:3001/products'
   //   const res = await fetch(url)
@@ -27,24 +26,24 @@ function ProductScreen({ match }) {
 
   useEffect(() => {
     async function fetchMyApi() {
-      const url = 'http://localhost:3001/products'
-      const res = await fetch(url)
-      const data = await res.json()
+      const url = "http://localhost:3001/products";
+      const res = await fetch(url);
+      const data = await res.json();
       setProduct(
         data.find(function (p) {
-          return p.id === match.params.id
+          return p.id === match.params.id;
         })
-      )
-      setLoading(false)
+      );
+      setLoading(false);
     }
-    fetchMyApi()
+    fetchMyApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   return (
     <>
-      <Link className='btn btn-light' to='/products'>
-        <i className='fas fa-long-arrow-alt-left' size='5x'></i>
+      <Link className="btn btn-light" to="/products">
+        <i className="fas fa-long-arrow-alt-left" size="5x"></i>
       </Link>
 
       {loading ? (
@@ -57,7 +56,7 @@ function ProductScreen({ match }) {
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={3}>
-              <ListGroup variant='flush'>
+              <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
@@ -73,7 +72,7 @@ function ProductScreen({ match }) {
             </Col>
             <Col md={3}>
               <Card>
-                <ListGroup variant='flush'>
+                <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
                       <Col>Нақд</Col>
@@ -98,20 +97,20 @@ function ProductScreen({ match }) {
                       <Col>
                         {product.countInStock > 0
                           ? `${product.countInStock} та бор`
-                          : 'Қолмаган'}
+                          : "Қолмаган"}
                       </Col>
                     </Row>
                   </ListGroup.Item>
 
                   <ListGroup.Item>
                     <Button
-                      className='btn-block'
-                      type='button'
+                      className="btn-block"
+                      type="button"
                       // it will check if out of stock, add button will be disabled
                       disabled={product.countInStock === 0}
                       onClick={() => {
-                        history.push('/cart')
-                        addToCart(product)
+                        history.push("/cart");
+                        addToCart(product);
                       }}
                     >
                       Саватчага Қўшиш
@@ -124,7 +123,7 @@ function ProductScreen({ match }) {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default ProductScreen
+export default ProductScreen;
