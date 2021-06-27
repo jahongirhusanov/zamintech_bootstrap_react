@@ -37,7 +37,7 @@ function ProductsScreen() {
       <Row sm={0} md={4}>
         <Col md={3}>
           <h1 className='screenTitle'>Махсулотлар</h1>
-          <Link to='/products-add'>
+          <Link to='/product-add'>
             <Button size='sm' className='btn btn-primary addButton'>
               <i className='fas fa-plus-circle'></i>
             </Button>{' '}
