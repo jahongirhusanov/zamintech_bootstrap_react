@@ -1,73 +1,74 @@
-import React from 'react'
-import { Form, Col } from 'react-bootstrap'
-import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
-import { CartContext } from '../../screens/CartPage/cart'
-import InputWithLabel from '../general/form/InputWithLabel'
+import React from "react";
+import { Form, Col } from "react-bootstrap";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { CartContext } from "../../screens/CartPage/cart";
+import InputWithLabel from "../general/form/InputWithLabel";
 
-export default function CartItem({ id, price, name, amount }) {
-  const { increaseAmount, decreaseAmount } = React.useContext(CartContext)
-  var currencyFormatter = require('currency-formatter')
+export default function CartItem({ id, installmentPrice, name, amount }) {
+  const { increaseAmount, decreaseAmount } = React.useContext(CartContext);
+  var currencyFormatter = require("currency-formatter");
   function formatNumber(number) {
-    number = Math.round(number)
-    return currencyFormatter.format(number, { code: '' })
+    number = Math.round(number);
+    return currencyFormatter.format(number, { code: "" });
   }
 
-  const [total, setTotal] = React.useState(0)
+  const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    setTotal(price * amount)
-  })
+    setTotal(installmentPrice * amount);
+  });
 
   return (
     <Form.Row>
       <Col xs={6}>
         <InputWithLabel
           required
-          placeholder='Mahsulotlar'
-          type='text'
+          placeholder="Mahsulotlar"
+          type="text"
           value={name}
           disabled
         />
       </Col>
-      <Col style={{ textAlign: 'center' }}>
-        <div className='ml-2'>
+      <Col>
+        <div className="ml-5">
           <button
-            type='button'
-            className='cart-btn amount-btn'
+            type="button"
+            className="cart-btn amount-btn"
             onClick={() => increaseAmount(id)}
-            style={{ outline: 'none' }}
+            style={{ outline: "none" }}
           >
-            <FaAngleUp />
+            <KeyboardArrowUpIcon />
           </button>
-          <p className='item-amount2'>{amount}</p>
+          <p className="item-amount2">{amount}</p>
           <button
-            type='button'
-            className='cart-btn amount-btn'
+            type="button"
+            className="cart-btn amount-btn"
             onClick={() => decreaseAmount(id, amount)}
-            style={{ outline: 'none' }}
+            style={{ outline: "none" }}
           >
-            <FaAngleDown />
+            <KeyboardArrowDownIcon />
           </button>
         </div>
       </Col>
       <Col>
         <InputWithLabel
           required
-          placeholder='Price'
-          type='text'
-          value={`${formatNumber(price)} сўм`}
+          placeholder="Price"
+          type="text"
+          value={`${formatNumber(installmentPrice)} сўм`}
           disabled
         />
       </Col>
       <Col>
         <InputWithLabel
           required
-          placeholder='Total'
-          type='text'
+          placeholder="Total"
+          type="text"
           value={`${formatNumber(total)} сўм`}
           disabled
         />
       </Col>
     </Form.Row>
-  )
+  );
 }
