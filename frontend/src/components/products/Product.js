@@ -3,11 +3,27 @@ import { Link } from 'react-router-dom'
 import { Card, Row, Col } from 'react-bootstrap'
 import Rating from './Rating'
 
+
 function Product({ product }) {
+
+  const defaultProfPic = 'https://dummyimage.com/640x510/6aebeb/000000.png&text=Maxsulot Rasmi Yoq'
+
+  function chooseProfilePic(srcImg) {
+    if (srcImg === '') {
+      return defaultProfPic
+    } else {
+      return srcImg
+    }
+  }
+
   return (
     <Card className='my-3 p-3 rounded'>
       <Link to={`/products/${product.id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img 
+        src={chooseProfilePic(product.image)} 
+        variant='top' 
+        />
+        
       </Link>
       <Card.Body>
         <Link to={`/products/${product.id}`}>
