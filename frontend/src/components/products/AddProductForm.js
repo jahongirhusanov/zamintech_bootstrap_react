@@ -8,37 +8,35 @@ import InputDropdown from '../general/form/InputDropdown'
 import InputDateAge from '../general/form/InputDateAge'
 import InputDateMinToday from '../general/form/InputDateMinToday'
 import InputDateMaxToday from '../general/form/InputDateMaxToday'
-import defaultProductPic from '../../images/products/productImage.png'
 import './addproductform.scss'
 
 function AddCustomerForm() {
   const url = 'http://localhost:3001/products/'
 
   // const [loading, setLoading] = useState(true)
-  const [supplierList, setSupplierList] = useState([])
+  // const [supplierList, setSupplierList] = useState([])
 
-  // const supplierList = productsApi.suppliers.names
+  const supplierList = productsApi.suppliers.names
   const brandList = productsApi.brand.names
   const categoryList = productsApi.category.names
 
-  // const defaultProductPic = '../../images/products/productImage.png'
-  useEffect(() => {
-    async function fetchMyApi() {
-      const url = 'http://localhost:3001/suppliers'
-      const res = await fetch(url)
-      const data = await res.json()
-      console.log(data[0].name)
-      setSupplierList(data)
-      // setSupplierList(
-      //   data.find(function (p) {
-      //     return p.id === match.params.id
-      //   })
-      // )
-      // setLoading(false)
-    }
-    fetchMyApi()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   async function fetchMyApi() {
+  //     const url = 'http://localhost:3001/suppliers'
+  //     const res = await fetch(url)
+  //     const data = await res.json()
+  //     console.log(data[0].name)
+  //     setSupplierList(data)
+  //     // setSupplierList(
+  //     //   data.find(function (p) {
+  //     //     return p.id === match.params.id
+  //     //   })
+  //     // )
+  //     // setLoading(false)
+  //   }
+  //   fetchMyApi()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   const [data, setData] = useState({
     id: '',
