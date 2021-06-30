@@ -3,6 +3,7 @@ import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { CartContext } from '../../screens/CartPage/cart'
+import "./cartitem.scss";
 
 export default function CartItem({
   id,
@@ -21,9 +22,19 @@ export default function CartItem({
     return currencyFormatter.format(number, { code: '' })
   }
 
+  const defaultProfPic = 'https://dummyimage.com/640x510/6aebeb/000000.png&text=Maxsulot Rasmi Yoq'
+
+  function chooseProfilePic(image) {
+    if (image === '') {
+      return defaultProfPic
+    } else {
+      return image
+    }
+  }
+
   return (
     <article className='cart-item'>
-      <img src={image} alt={name} />
+      <img src={chooseProfilePic(image)}  alt={name} className="cartImg"/>
       <div>
         <h4>{name}</h4>
         {/* <h5>${price}</h5> */}
